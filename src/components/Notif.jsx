@@ -3,8 +3,8 @@ import React from 'react';
 
 const Notif = ({ user }) => {
   return (
-    <div className="notif">
-      <h1>Notificaciones de { user.username.username }</h1>
+    <div className="notif container">
+      <h1>Notificaciones de { user.username }</h1>
     </div>
   );
 };

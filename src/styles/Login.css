@@ -43,10 +43,10 @@
     border: none;
     border-radius: 5px;
     background-color: var( --accent-color);
-    color: #fff;
+    color: var( --secondary-color);
     font-size: 1rem;
     cursor: pointer;
 }
 .login form button:hover{
-    background-color: #ff7870;
+    background-color: var( --accent-color-light);
 }

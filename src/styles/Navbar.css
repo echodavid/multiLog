@@ -29,7 +29,14 @@
 .navbar-nav li a:hover{
     color: var( --accent-color);
 }
+.navbar-nav li a.active{
+    color: var( --accent-color);
+}
 .navbar-nav li a i svg{
     height: 1.8rem;
     width: 1.8rem;
 }
+.navbar-nav li a i{
+    margin-right: .5rem;
+}
+

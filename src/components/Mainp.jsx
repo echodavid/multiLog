@@ -8,7 +8,7 @@ const Mainp = ({ user, setUser }) => {
   const [us, setUs] = useState(user.username.username);
 
   useEffect(() => {
-    setUs(user.username.username);
+    setUs(user.username);
   }, [user.username]);
 
   return (

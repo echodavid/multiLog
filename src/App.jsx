@@ -1,12 +1,18 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Navbar from "./components/Navbar.jsx"
 import Mainp from "./components/Mainp.jsx"; 
 
 
 function App() {
-  const [option, setOption] = useState("ig");
+  const [option, setOption] = useState("fb");
+  
+  const handleNavbarClick = (opt) => {
+    setOption(opt);
+  };
+  
+
   const [user, setUser] = useState(
     {ig:{
       username:'',
@@ -20,8 +26,9 @@ function App() {
       username:'',
       password:''
     }}
-  );
-  const handleChange = ((username, password) =>{
+  )
+
+  const handleChangeUser = ((username, password) =>{
       setUser({
         ...user, 
         [option]:{
@@ -30,11 +37,14 @@ function App() {
         }
       })
     }
-  );
+  )
+
+
+
   return (
       <div className="main">
-        <Navbar />
-        <Mainp user={user[option]} setUser={handleChange}/>
+        <Navbar handleNavbarClick={handleNavbarClick} selectedOption={option}/>
+        <Mainp user={user[option]} setUser={handleChangeUser}/>
       </div>
   )
 }
