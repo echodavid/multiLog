@@ -1,9 +1,6 @@
 import React from 'react';
 
 const NavItem = ({ option, selectedOption, handleNavbarClick}) => {
-    /*console.log(option)
-    console.log(selectedOption)
-    console.log(handleNavbarClick)*/
     return (
         <a 
             href="#" 
