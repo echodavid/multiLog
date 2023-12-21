@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Login from './Login.jsx'
 import '../styles/Mainp.css'
+import Logged from "./Logged.jsx";
 
-const Mainp = ({ username, setUsername, opc }) => {
-  let user = username[opc];
-  console.log(user);
+const Mainp = ({ user, setUser }) => {
+  const [us, setUs] = useState(user.username.username);
+
+  useEffect(() => {
+    setUs(user.username.username);
+  }, [user.username]);
+
   return (
     <section className="mainp">
       
-      {(user != '' && user != undefined)? (
-        <h1>Bienvenido  </h1>
-        
+      {(us != '' && us != undefined)? (
+        <Logged user={user} setUser={setUser}/>
       ) : (
         
-        <Login username={username} setUsername={setUsername} opc={opc} />
+        <Login user={user} setUser={setUser} />
         
       )}
     </section>

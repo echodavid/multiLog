@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../styles/Login.css'
 
-const Login = ({ username, setUsername, opc }) => {
+const Login = ({ user, setUser }) => {
 
   const [name, setName] = useState("");
   const [pssword, setPssword] = useState("");
@@ -12,8 +12,10 @@ const Login = ({ username, setUsername, opc }) => {
       alert("Por favor ingrese usuario y contraseña");
       return;
     }
-    console.log(name, pssword);
-    setUsername({...username, [opc]:name});
+    let username = name;
+    let password = pssword;
+    console.log(name, username);
+    setUser({username , password});
     
   };
 
