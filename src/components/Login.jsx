@@ -16,7 +16,6 @@ const Login = ({ user, setUser }) => {
     let password = pssword;
     console.log(name, username);
     setUser(username , password);
-    
   };
 
   return (

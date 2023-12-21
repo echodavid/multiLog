@@ -17,10 +17,9 @@ const Mainp = ({ user, setUser }) => {
       {(us != '' && us != undefined)? (
         <Logged user={user} setUser={setUser}/>
       ) : (
-        
         <Login user={user} setUser={setUser} />
-        
       )}
+      
     </section>
   );
 };
