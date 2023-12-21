@@ -1,0 +1,23 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary-color: #090838;
+    --secondary-color: #f6f6f6;
+    --accent-color: #ff5e57;
+    --text-color: #333;
+    --text-color-light: #999;
+    --text-color-lighter: #ccc;
+}
+html{
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+}
+#root{
+    padding: 0 !important;
+    min-width: 100vw;
+    min-height: 100vh;
+}
