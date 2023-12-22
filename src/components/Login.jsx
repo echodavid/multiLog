@@ -14,7 +14,6 @@ const Login = ({ user, setUser }) => {
     }
     let username = name;
     let password = pssword;
-    console.log(name, username);
     setUser(username , password);
   };
 
