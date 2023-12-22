@@ -1,0 +1,11 @@
+
+.notif.container {
+    padding: 20px;
+  }
+
+  .fb-notification {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
