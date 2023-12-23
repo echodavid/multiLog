@@ -4,22 +4,34 @@ import Login from './Login.jsx'
 import '../styles/Mainp.css'
 import Logged from "./Logged.jsx";
 
-const Mainp = ({ user, setUser }) => {
-  const [us, setUs] = useState(user.username.username);
-
+const Mainp = ({ user, setUser, opt }) => {
+  const [us, setUs] = useState(user.username);
+  let option = "";
   useEffect(() => {
     setUs(user.username);
   }, [user.username]);
+  switch (opt) {
+    case "fb":
+      option = "facebook";
+      break;
+    case "ig":
+      option = "instagram";
+      break;
+    case "tw":
+      option = "x";
+      break;
+    default:
+      option = "facebook";
+      break;
+  }
 
   return (
     <section className="mainp">
-      
-      {(us != '' && us != undefined)? (
-        <Logged user={user} setUser={setUser}/>
+      {us !== "" && us !== undefined ? (
+        <Logged user={user} setUser={setUser} option={option} />
       ) : (
-        <Login user={user} setUser={setUser} />
+        <Login user={user} setUser={setUser} option={option} />
       )}
-      
     </section>
   );
 };

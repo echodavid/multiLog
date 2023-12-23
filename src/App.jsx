@@ -16,24 +16,28 @@ function App() {
   const [user, setUser] = useState(
     {ig:{
       username:'',
-      password:''
+      password:'',
+      notifications: [],
     },
     fb:{
       username:'',
-      password:''
+      password:'',
+      notifications: [],
     },
     tw:{
       username:'',
-      password:''
+      password:'',
+      notifications: [],
     }}
   )
 
-  const handleChangeUser = ((username, password) =>{
+  const handleChangeUser = ((username, password, notifications) =>{
       setUser({
         ...user, 
         [option]:{
           username:username,
-          password:password
+          password:password,
+          notifications: notifications,
         }
       })
     }
@@ -44,7 +48,7 @@ function App() {
   return (
       <div className="main">
         <Navbar handleNavbarClick={handleNavbarClick} selectedOption={option}/>
-        <Mainp user={user[option]} setUser={handleChangeUser}/>
+        <Mainp user={user[option]} setUser={handleChangeUser} opt={option}/>
       </div>
   )
 }

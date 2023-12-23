@@ -5,7 +5,7 @@ import Comments from "./Comments.jsx";
 import Messages from "./Messages.jsx";
 import '../styles/Logged.css'
 
-const Logged = ({ user, setUser }) => {
+const Logged = ({ user, setUser, option }) => {
   return (
     <div className="logged">
       <div className="header">
@@ -15,9 +15,8 @@ const Logged = ({ user, setUser }) => {
       <div className="content">
         <div className="column-1">
           <Notif user={user} />
-          <Comments user={user} />
         </div>
-        <Messages user={user} />
+        <Messages user={user} option={option} />
       </div>
     </div>
   );
