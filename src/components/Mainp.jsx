@@ -6,31 +6,18 @@ import Logged from "./Logged.jsx";
 
 const Mainp = ({ user, setUser, opt }) => {
   const [us, setUs] = useState(user.username);
-  let option = "";
+  console.log(user)
+  
   useEffect(() => {
     setUs(user.username);
   }, [user.username]);
-  switch (opt) {
-    case "fb":
-      option = "facebook";
-      break;
-    case "ig":
-      option = "instagram";
-      break;
-    case "tw":
-      option = "x";
-      break;
-    default:
-      option = "facebook";
-      break;
-  }
 
   return (
-    <section className="mainp">
+    <section className="mainp" id={user.id}>
       {us !== "" && us !== undefined ? (
-        <Logged user={user} setUser={setUser} option={option} />
+        <Logged user={user} setUser={setUser} option={opt} />
       ) : (
-        <Login user={user} setUser={setUser} option={option} />
+        <Login user={user} setUser={setUser} option={opt} />
       )}
     </section>
   );

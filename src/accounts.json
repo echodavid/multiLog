@@ -1,0 +1,12 @@
+{
+    "accounts": [
+        {
+            "id": 0,
+            "platform": "Facebook",
+            "username":"fsdf",
+            "password":"",
+            "notifications": []
+        }
+    ]
+
+}

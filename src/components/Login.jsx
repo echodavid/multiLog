@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import '../styles/Login.css'
 import axios from 'axios'
 
-const Login = ({ user, setUser, option }) => {
+const Login = ({setUser, option }) => {
+
   const url = "http://127.0.0.1:5002/";
 
   const [name, setName] = useState("");
@@ -39,7 +40,7 @@ const Login = ({ user, setUser, option }) => {
   return (
     <section className="login">
       <h1>Login</h1>
-      <p>Ingresa tu usuario y contraseña de la red social {option}</p>
+      <p>Inicia sesión en {option}</p>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Usuario</label>
         <input
