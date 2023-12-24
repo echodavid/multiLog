@@ -23,7 +23,7 @@ function App() {
     },
     {
       id: 2,
-      platform: "Twitter",
+      platform: "X",
       username: "jose",
       password: "123",
       notifications: [],
@@ -31,7 +31,7 @@ function App() {
     localStorage.setItem("accounts", JSON.stringify(first));
     console.log(JSON.parse(localStorage.getItem("accounts")))
   }
-  initAccounts()
+  //initAccounts()
 
   
   console.log(JSON.parse(localStorage.getItem("accounts")));
@@ -69,11 +69,11 @@ function App() {
   //clear()
 
   //agregar nueva cuente
-  const pushAccount = (platform) => {
+  const pushAccount = (idd, platform) => {
     console.log(platform)
 
     const newAccount = {
-      id: Math.random().toString(36).substring(7),
+      id: idd,
       platform: platform,
       username: "",
       password: "",

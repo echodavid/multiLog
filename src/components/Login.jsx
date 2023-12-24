@@ -16,7 +16,7 @@ const Login = ({user, setUser, option }) => {
     }
     let username = name;
     let password = pssword;
-    try {
+    /*try {
       const response = await axios.get(`${url}${option.platform.toLoweCase()}?email=${username}&passwd=${password}`, {
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,9 @@ const Login = ({user, setUser, option }) => {
     } catch (error) {
       // Manejar errores de red
       alert("Error de conexión");
-    }
+    }*/
+    setUser(option.id, username, password, []);
+
   };
   return (
     <section className="login">
