@@ -31,13 +31,11 @@ function App() {
     localStorage.setItem("accounts", JSON.stringify(first));
     console.log(JSON.parse(localStorage.getItem("accounts")))
   }
-  //initAccounts()
+  initAccounts()
 
   
   console.log(JSON.parse(localStorage.getItem("accounts")));
   
-  const [total, setTotal] = useState(JSON.parse(localStorage.getItem("accounts")).length)
-  console.log(total)
 
   const [option, setOption] = useState({
     id: 0,
@@ -113,13 +111,15 @@ function App() {
       })
     )
   }, [user])
-  console.log(total)
   
 
   
 
 
     const handleChangeUser = (id, username, password, notifications) => {
+
+
+
       //conocer el indice del usuario
       console.log(id)
       const index = user.findIndex((user) => user.id == id)

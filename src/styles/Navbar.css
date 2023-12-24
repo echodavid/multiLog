@@ -7,10 +7,13 @@
     top: 0;
     display: flex;
     flex-direction: column;
-    padding-top: 1rem
+    padding-top: 1rem;
+    max-width: 4rem;
 
 }
 .navbar-nav{
+    width: 100%;
+    height: fit-content;
     max-height: calc(100vh - 6rem);
     list-style: none;
     padding: 0;
@@ -38,8 +41,27 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
   }
-.static{
-    overflow-y: hidden;
+  .static{
+    border-radius: 1rem;
+    height: fit-content;
+    max-height: 3.8rem;
+    width: fit-content;
+    overflow: visible; 
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    background-color: var(--primary-color);
+}
+.hidden{
+    height: 3.8;
+    flex-grow: 0;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: row;
+}
+.static > .out{
+    height: 2.8rem;
+    background-color: var(--primary-color);
 }
 
 .navbar-nav li{

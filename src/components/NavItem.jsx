@@ -1,6 +1,7 @@
 import React from 'react';
 
 const NavItem = ({ option, selectedOption, handleNavbarClick}) => {
+  console.log(option)
     return (
         <a 
             href={`#${option.id}`}
