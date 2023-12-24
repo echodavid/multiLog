@@ -8,8 +8,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 1rem;
-    max-width: 4rem;
-
+    max-width: 4.5rem;
+    align-items: end;
 }
 .navbar-nav{
     width: 100%;
@@ -21,8 +21,14 @@
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: scroll;
-
 }
+.row{
+    height: 3.8;
+    max-height: 3.8rem;
+    display: flex;
+    flex-direction: row;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
   }
@@ -41,7 +47,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
   }
-  .static{
+  /*.static{
+    position: fixed;
     border-radius: 1rem;
     height: fit-content;
     max-height: 3.8rem;
@@ -50,6 +57,7 @@
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    margin-left: 4rem;
     background-color: var(--primary-color);
 }
 .hidden{
@@ -59,16 +67,59 @@
     display: flex;
     flex-direction: row;
 }
-.static > .out{
+.out{
     height: 2.8rem;
     background-color: var(--primary-color);
-}
+}*/
 
 .navbar-nav li{
     margin: .5rem;
 }
+.navbar-nav .context{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.out{
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.context-menu{
+    border-radius: .5rem;
+    padding: .1rem;
+    background-color: var( --text-color-lighter);
+    color: var( --primary-color);
+    margin-left: 3.5rem;
+    position: fixed;
+    display: flex;
+    width: fit-content;
+    overflow: visible;
+}
+.context-menu li{
+    margin: .5rem;
+}
+.option-display{
+    border-radius: 1rem;
+    padding: .5rem;
+    color: var( --primary-color);
+    position: fixed;
+    display: flex;
+    overflow: visible;
+    height: fit-content;
+    max-height: 3.8rem;
+    width: fit-content;
+    flex-direction: row;
+    flex-grow: 1;
+    margin-left: 3.5rem;
+    background-color: var(--primary-color);
+}
 
-.navbar-nav li a{
+li a{
     color: var( --text-color-lighter);
     display: block;
     text-decoration: none;
@@ -77,10 +128,16 @@
     align-items: center;
     justify-self: center;
 }
-.navbar-nav li a:hover{
+.delete{
+    border-bottom: 4px solid var(--text-color-light);
+    color: var(--text-color);
+    padding: .1rem 1rem;
+    font-size: 1rem;
+}
+li a:hover{
     color: var( --accent-color);
 }
-.navbar-nav li a.active{
+li a.active{
     color: var( --accent-color);
 }
 .icon{

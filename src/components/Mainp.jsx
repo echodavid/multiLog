@@ -5,7 +5,7 @@ import '../styles/Mainp.css'
 import Logged from "./Logged.jsx";
 
 const Mainp = ({ user, setUser, opt }) => {
-
+  console.log(user)
   const [us, setUs] = useState(user.username);
   console.log(user.username);
   useEffect(() => {

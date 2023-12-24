@@ -7,30 +7,38 @@ import Mainp from "./components/Mainp.jsx";
 function App() {
   
   const initAccounts = () => {
+    
     let first = [{
       id: 0,
-      platform: "Facebook",
-      username: "jose",
-      password: "123",
-      notifications: [],
-    },
-    {
-      id: 1,
-      platform: "Instagram",
-      username: "jose",
-      password: "123",
-      notifications: [],
-    },
-    {
-      id: 2,
-      platform: "X",
-      username: "jose",
-      password: "123",
+      platform: "",
+      username: "",
+      password: "",
       notifications: [],
     }];
     localStorage.setItem("accounts", JSON.stringify(first));
     console.log(JSON.parse(localStorage.getItem("accounts")))
   }
+
+  const [user, setUser] = useState(
+      JSON.parse(localStorage.getItem("accounts")), []
+  )
+  useEffect(() => {
+    // Solo guardar el estado de user en localStorage si user no es undefined o null
+    localStorage.setItem('accounts', JSON.stringify(user));
+  }, [user]);
+  console.log(localStorage.getItem('accounts'))
+
+
+
+
+  const [empty, setEmpty] = useState(true);
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("accounts")) == null) {
+      setEmpty(true);
+    } else{
+      setEmpty(false);
+  }}, [user])
+
   //initAccounts()
 
   
@@ -39,26 +47,31 @@ function App() {
 
   const [option, setOption] = useState({
     id: 0,
-    platform: "Facebook",
+    platform: "",
   });
 
   const handleNavbarClick = (opt) => {
     setOption(opt);
   };
 
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("accounts")),
-  )
+  
   const [profiles, setProfiles] = useState(
-    user.map((account) => {
-      return {
-        id: account.id,
-        platform: account.platform,
+    () => {
+      if(user == null){
+        return []
       }
-    })
-  )
+      return(
+        user.map((account) => {
+          return{
+            id: account.id,
+            platform: account.platform,
+          }
+        }
+    ))
+  }
+)
 
-  console.log(user)
+  console.log(profiles)
 
 
 
@@ -71,7 +84,6 @@ function App() {
   //agregar nueva cuente
   const pushAccount = (idd, platform) => {
     console.log(platform)
-
     const newAccount = {
       id: idd,
       platform: platform,
@@ -90,12 +102,26 @@ function App() {
     setUser(updatedAccounts);
     console.log(user)
   }
+  const deleteAccount = (id) => {
+    const updatedAccounts = user.filter((account) => account.id !== id);
+    setUser(updatedAccounts);
+    if(id == option.id){
+      if (profiles.length == 0) {
+        setOption({
+          id: 0,
+          platform: "",
+        });
+      } else{
+        console.log(profiles.length)
+        setOption({
+          id: profiles[profiles.length-1].id,
+          platform: profiles[profiles.length-1].platform,
+        });
+      }
+    }
+  }
 
-  useEffect(() => {
-    // Solo guardar el estado de user en localStorage si user no es undefined o null
-    localStorage.setItem('accounts', JSON.stringify(user));
-  }, [user]);
-  console.log(localStorage.getItem('accounts'))
+  
 
 
   
@@ -139,11 +165,29 @@ function App() {
   
   
   
-  const index = user.findIndex((user) => user.id == option.id);
+  const index = () => {
+    if(user == null){
+      return 0
+    }
+    return(
+      user.findIndex((user) => user.id == option.id))
+  }
   return (
       <div className="main">
-        <Navbar handleNavbarClick={handleNavbarClick} selectedOption={option} pushAccount={pushAccount} profiles={profiles}/>
-        <Mainp user={user[user.findIndex((user) => user.id == option.id)]} setUser={handleChangeUser} opt={option}/>
+        {
+          empty ? (
+            <div className="empty">
+              <h1>No hay cuentas</h1>
+              <p>Por favor agrega una nueva cuenta</p>
+            </div>
+          ) : (
+            <>
+            <Navbar handleNavbarClick={handleNavbarClick} selectedOption={option} pushAccount={pushAccount} deleteAccount={deleteAccount} profiles={profiles}/>
+            <Mainp user={user[user.findIndex((user) => user.id == option.id)]} setUser={handleChangeUser} opt={option}/>
+            </>
+            )
+        }
+        
       </div>
   )
 }
