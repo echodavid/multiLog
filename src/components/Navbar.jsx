@@ -9,7 +9,7 @@ const Navbar = ({ handleNavbarClick, selectedOption, pushAccount, profiles }) =>
   
   console.log(profiles)
 
-  const add = (platform, username, password) => pushAccount(platform, username, password, [] )
+  const add = (platform, username, password) => pushAccount(platform, username, password )
 
 
   console.log(profiles)

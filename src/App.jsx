@@ -4,33 +4,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Mainp from "./components/Mainp.jsx"; 
 
-import account from './accounts.json'
-
-
 function App() {
-  localStorage.setItem("accounts", JSON.stringify([
-    {
-        "id": 0,
-        "platform": "Facebook",
-        "username":"fsdf",
-        "password":"",
-        "notifications": []
-    },
-    {
-        "id": 1,
-        "platform": "Instagram",
-        "username":"fsdf",
-        "password":"",
-        "notifications": []
-    },
-    {
-        "id": 2,
-        "platform": "X",
-        "username":"fsdf",
-        "password":"",
-        "notifications": []
-    }
-  ]))
   console.log(localStorage.getItem("accounts"))
   const [total, setTotal] = useState(JSON.parse(localStorage.getItem("accounts")).length)
   
@@ -46,33 +20,34 @@ function App() {
   };
 
   
-
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("accounts"))
   )
 
-  const pushAccount = (platform, username, password, notifications) => {
-    console.log(platform, username, password, notifications)
-    
-    localStorage.setItem("accounts", JSON.stringify([
-      ...JSON.parse(localStorage.getItem("accounts")),
-      {
-        id: Math.random().toString(36).substring(7),
-        platform: platform,
-        username: username,
-        password: password,
-        notifications: notifications,
-      }
-    ]))
-    console.log(JSON.parse(localStorage.getItem("accounts")))
-    setTotal(total + 1)
-    setUser(JSON.parse(localStorage.getItem("accounts")))
+  const pushAccount = (platform, username, password) => {
+    console.log(platform, username, password)
+
+    const newAccount = {
+      id: Math.random().toString(36).substring(7),
+      platform: platform,
+      username: username,
+      password: password,
+      notifications: [],
+    };
+
+    const updatedAccounts = [
+      ...JSON.parse(localStorage.getItem("accounts") || "[]"),
+      newAccount
+    ];
+  
+    localStorage.setItem("accounts", JSON.stringify(updatedAccounts));
+  
+    // Actualizar el estado de user
+    setTotal(total + 1);
+    console.log(total)
+    setUser(updatedAccounts);
     console.log(user);
   }
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem("accounts")))
-  }, [total])
-
 
 
   const [profiles, setProfiles] = useState(
@@ -111,11 +86,6 @@ function App() {
     )
   }
 
-  const [usertemp, setUsertemp] = useState({
-    username: "",
-    password: "",
-    notifications: [],
-  })
   const index = user.findIndex((user) => user.id == option.id);
   return (
       <div className="main">

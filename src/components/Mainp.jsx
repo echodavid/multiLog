@@ -6,7 +6,6 @@ import Logged from "./Logged.jsx";
 
 const Mainp = ({ user, setUser, opt }) => {
   const [us, setUs] = useState(user.username);
-  console.log(user)
   
   useEffect(() => {
     setUs(user.username);
