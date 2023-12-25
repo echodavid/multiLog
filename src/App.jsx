@@ -5,39 +5,36 @@ import Navbar from "./components/Navbar.jsx";
 import Mainp from "./components/Mainp.jsx"; 
 
 function App() {
-  
-  const initAccounts = () => {
-    
-    let first = [{
-      id: 0,
-      platform: "",
-      username: "",
-      password: "",
-      notifications: [],
-    }];
+  const [selectedUser, setSelectedUser] = useState(null);
+  const initAccounts = (first) => {
     localStorage.setItem("accounts", JSON.stringify(first));
-    console.log(JSON.parse(localStorage.getItem("accounts")))
   }
 
   const [user, setUser] = useState(
-      JSON.parse(localStorage.getItem("accounts")), []
+    () => {
+      try {
+        return(
+          JSON.parse(localStorage.getItem("accounts"))
+        )
+      } catch (error) {
+        return []
+      }
+    }
   )
+  console.log(user)
   useEffect(() => {
-    // Solo guardar el estado de user en localStorage si user no es undefined o null
-    localStorage.setItem('accounts', JSON.stringify(user));
+    localStorage.setItem("accounts", JSON.stringify(user));
   }, [user]);
   console.log(localStorage.getItem('accounts'))
+  
+  
+  
 
 
 
 
   const [empty, setEmpty] = useState(true);
-  useEffect(() => {
-    if (JSON.parse(localStorage.getItem("accounts")) == null) {
-      setEmpty(true);
-    } else{
-      setEmpty(false);
-  }}, [user])
+  
 
   //initAccounts()
 
@@ -45,10 +42,23 @@ function App() {
   console.log(JSON.parse(localStorage.getItem("accounts")));
   
 
-  const [option, setOption] = useState({
-    id: 0,
-    platform: "",
-  });
+  const [option, setOption] = useState(
+    () => {
+      console.log(user)
+      if (user == null || user.length == 0) {
+        return {};
+      }
+      return(
+        {
+          id: user[user.length-1].id,
+          platform: user[user.length-1].platform,
+        }
+      )
+    }
+  );
+
+  
+
 
   const handleNavbarClick = (opt) => {
     setOption(opt);
@@ -72,7 +82,7 @@ function App() {
 )
 
   console.log(profiles)
-
+  
 
 
   const clear = () => {
@@ -83,6 +93,7 @@ function App() {
 
   //agregar nueva cuente
   const pushAccount = (idd, platform) => {
+
     console.log(platform)
     const newAccount = {
       id: idd,
@@ -93,23 +104,85 @@ function App() {
     };
     console.log(newAccount)
 
+    if (user == null) {
+      setUser([newAccount]);
+      return;
+    }
     const updatedAccounts = [
       ...user,
       newAccount,
     ];
     console.log(updatedAccounts)
     // Actualizar el estado de user
+    initAccounts(updatedAccounts);
     setUser(updatedAccounts);
+    setOption({
+      id: idd,
+      platform: platform,
+    })
+    console.log(option)
     console.log(user)
+    console.log(empty)
   }
+
+
+
+  //clear()
+
   const deleteAccount = (id) => {
+
+
+
+
+    console.log(id)
+    console.log(user)
+
+    let updatedAccounts = [];
+      for(let i = 0; i < user.length; i++){
+        console.log(user[i].id)
+        if(user[i].id != id){
+          console.log("miau")
+          updatedAccounts.push(user[i]);
+        }
+      }
+    
+    console.log(updatedAccounts)
+    
+    setUser(updatedAccounts);
+    let newOption = option;
+
+
+    console.log(user)
+    if(id == option.id){
+      console.log("miau")
+      if (updatedAccounts.length == 0) {
+        console.log("miauu")
+        newOption = {}
+      } else{
+        console.log("miaugo")
+        console.log(option)
+        console.log(profiles[profiles.length-2].id)
+        console.log(profiles[profiles.length-2].platform)
+        newOption = {
+          id: updatedAccounts[updatedAccounts.length-1].id,
+          platform: updatedAccounts[updatedAccounts.length-1].platform,
+        };
+        console.log(user)
+        console.log(profiles.length)
+      }
+      console.log(user)
+    }
+    console.log(option)
+    console.log(newOption)
+    setOption(newOption); // Llamar a setOption con newOption al final de la función
+    console.log(option)
+
+    /*
     const updatedAccounts = user.filter((account) => account.id !== id);
     setUser(updatedAccounts);
     if(id == option.id){
-      if (profiles.length == 0) {
+      if (user == null) {
         setOption({
-          id: 0,
-          platform: "",
         });
       } else{
         console.log(profiles.length)
@@ -118,34 +191,49 @@ function App() {
           platform: profiles[profiles.length-1].platform,
         });
       }
-    }
+    }*/
   }
-
+  
+  useEffect(() => {
+    const newUser = user.find((user) => user.id === option.id);
+    setSelectedUser(newUser);
+  }, [option, user]);
   
 
 
-  
-
+  console.log(selectedUser)
+  console.log(user)
   console.log(profiles)
+  console.log(option)
+  console.log(empty)
   useEffect(() => {
     setProfiles(
-      user.map((account) => {
-        return {
-          id: account.id,
-          platform: account.platform,
+      () => {
+        if(user == null){
+          return []
         }
-      })
+        return(
+          user.map((account) => {
+            return{
+              id: account.id,
+              platform: account.platform,
+            }
+          }
+      ))
+      }
     )
   }, [user])
-  
+  useEffect(() => {
+    if (user == null || user.length == 0) {
+      setEmpty(true);
+    } else{
+      setEmpty(false);
+  }}, [user, option, selectedUser])
 
   
 
 
     const handleChangeUser = (id, username, password, notifications) => {
-
-
-
       //conocer el indice del usuario
       console.log(id)
       const index = user.findIndex((user) => user.id == id)
@@ -172,19 +260,41 @@ function App() {
     return(
       user.findIndex((user) => user.id == option.id))
   }
+
+  console.log(index())
+  console.log(user)
+  console.log(option)
+  console.log(selectedUser)
   return (
       <div className="main">
+        <Navbar
+                handleNavbarClick={handleNavbarClick}
+                selectedOption={option}
+                pushAccount={pushAccount}
+                deleteAccount={deleteAccount}
+                profiles={profiles}
+              />
         {
-          empty ? (
-            <div className="empty">
-              <h1>No hay cuentas</h1>
-              <p>Por favor agrega una nueva cuenta</p>
-            </div>
-          ) : (
+          empty ? ( 
             <>
-            <Navbar handleNavbarClick={handleNavbarClick} selectedOption={option} pushAccount={pushAccount} deleteAccount={deleteAccount} profiles={profiles}/>
-            <Mainp user={user[user.findIndex((user) => user.id == option.id)]} setUser={handleChangeUser} opt={option}/>
+              <div className="mainp">
+                <h1>No hay cuentas</h1>
+                <p>Por favor agrega una nueva cuenta</p>
+              </div>
             </>
+          ) : (
+            ( 
+                (user == null || user.length == 0)? (
+                  <div className="mainp">
+                    <h1>No hay cuentas</h1>
+                    <p>Por favor agrega una nueva cuenta</p>
+                  </div>
+                ) : (
+                  <Mainp user={selectedUser} setUser={handleChangeUser} opt={option}/>
+                  
+                )
+                )
+            
             )
         }
         

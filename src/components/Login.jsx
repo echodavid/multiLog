@@ -3,7 +3,8 @@ import '../styles/Login.css'
 import axios from 'axios'
 
 const Login = ({user, setUser, option }) => {
-  
+  console.log(user)
+  console.log(option)
   const url = "http://127.0.0.1:5002/";
 
   const [name, setName] = useState("");

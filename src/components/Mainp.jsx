@@ -6,12 +6,18 @@ import Logged from "./Logged.jsx";
 
 const Mainp = ({ user, setUser, opt }) => {
   console.log(user)
-  const [us, setUs] = useState(user.username);
-  console.log(user.username);
-  useEffect(() => {
-    setUs(user.username);
-  }, [user]);
   console.log(opt)
+  const [us, setUs] = useState(
+    () => {
+      if (user == null) {
+        return "";
+      }
+      return user.username
+    }
+  )
+  console.log(user)
+  console.log(opt)
+  console.log(user.id)
   return (
     <section className="mainp" id={user.id}>
       {(us == "" || us == undefined) ? (
