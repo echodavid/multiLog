@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NavItemContext = ({ deleteAccount}) => {
+const NavItemContext = ({ deleteAccount }) => {
   const handleDelete = () => {
     deleteAccount();
   }

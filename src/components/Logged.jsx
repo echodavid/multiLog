@@ -10,7 +10,7 @@ const Logged = ({ user, setUser, option }) => {
     <div className="logged">
       <div className="header">
         <h1>Bienvenido {user.username}</h1>
-        <button onClick={() => setUser('', '')}>Cerrar sesión</button>
+        <button onClick={() => setUser(user.id, "", "", [])}>Cerrar sesión</button>
       </div>
       <div className="content">
         <div className="column-1">

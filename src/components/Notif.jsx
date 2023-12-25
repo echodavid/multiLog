@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/Notif.css';
 
 const Notif = ({ user }) => {
-  console.log(user.notifications);
   return (
     <div className="notif container" style={{ maxHeight: '90vh', overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Notificaciones de {user.username}</h1>

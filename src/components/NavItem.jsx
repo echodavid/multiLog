@@ -5,19 +5,14 @@ const NavItem = ({option, selectedOption, handleNavbarClick, deleteAccount}) => 
   const [context, setContext] = React.useState(false);
 
   const showContext = () => setContext(!context);
-  console.log(selectedOption)
   const handleContext = () => {
     showContext();
-    console.log("context")
   }
   const removeAccount = () => {
-    console.log("delete")
-    console.log(deleteAccount)
     handleContext();
     deleteAccount(option.id);
   }
 
-  console.log(option)
     return (
       <li key={option.id} className={`${context == true ? "context" : ""}`}>
         <a

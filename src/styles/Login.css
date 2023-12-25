@@ -1,4 +1,4 @@
-.login{
+.login {
     width: 100%;
     max-width: 400px;
     display: flex;
@@ -10,48 +10,56 @@
     padding: 2rem;
     border-radius: 8px;
 }
-.login h1{
+
+.login h1 {
     font-size: 3rem;
     color: var(--text-color);
     margin-bottom: .2rem;
 }
-.login p{
+
+.login p {
     font-size: 1.2rem;
     color: var(--text-color);
     margin-bottom: 1.5rem;
 }
-.login form{
+
+.login form {
     text-align: justify;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
-.login form label{
+
+.login form label {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: .5rem;
 }
-.login form input{
+
+.login form input {
     padding: .5rem;
-    border: 1px solid var( --text-color);
+    border: 1px solid var(--text-color);
     border-radius: 5px;
     margin-bottom: 1rem;
     font-size: 1rem;
 }
-.login form input:focus{
+
+.login form input:focus {
     outline: none;
-    border-color: var( --text-color-light);
+    border-color: var(--text-color-light);
 }
-.login form button{
+
+.login form button {
     margin: 1rem 0;
     padding: .5rem;
     border: none;
     border-radius: 5px;
-    background-color: var( --accent-color);
-    color: var( --secondary-color);
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
     font-size: 1rem;
     cursor: pointer;
 }
-.login form button:hover{
-    background-color: var( --accent-color-light);
+
+.login form button:hover {
+    background-color: var(--accent-color-light);
 }

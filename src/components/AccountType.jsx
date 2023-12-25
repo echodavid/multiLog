@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AccountType = ({ clic }) => {
-  console.log(clic)
   return (
     <div className="option-display">
       <li className="out">

@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../styles/Login.css'
 import axios from 'axios'
 
-const Login = ({user, setUser, option }) => {
-  console.log(user)
-  console.log(option)
+const Login = ({ setUser, option }) => {
   const url = "http://127.0.0.1:5002/";
 
   const [name, setName] = useState("");
@@ -17,14 +15,13 @@ const Login = ({user, setUser, option }) => {
     }
     let username = name;
     let password = pssword;
-    /*try {
+    /*
+    try {
       const response = await axios.get(`${url}${option.platform.toLoweCase()}?email=${username}&passwd=${password}`, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-      
-      console.log(response.data);
       let notifications = response.data;
       if (response.status === 200) {
         setUser(option.id, username, password, notifications);
@@ -34,9 +31,9 @@ const Login = ({user, setUser, option }) => {
     } catch (error) {
       // Manejar errores de red
       alert("Error de conexión");
-    }*/
+    }
+    */
     setUser(option.id, username, password, []);
-
   };
   return (
     <section className="login">

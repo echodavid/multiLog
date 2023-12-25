@@ -5,8 +5,6 @@ import '../styles/Mainp.css'
 import Logged from "./Logged.jsx";
 
 const Mainp = ({ user, setUser, opt }) => {
-  console.log(user)
-  console.log(opt)
   const [us, setUs] = useState(
     () => {
       if (user == null) {
@@ -15,13 +13,13 @@ const Mainp = ({ user, setUser, opt }) => {
       return user.username
     }
   )
-  console.log(user)
-  console.log(opt)
-  console.log(user.id)
+  useEffect(() => {
+    setUs(user.username);
+  }, [user]);
   return (
     <section className="mainp" id={user.id}>
       {(us == "" || us == undefined) ? (
-        <Login user={user} setUser={setUser} option={opt} />
+        <Login setUser={setUser} option={opt} />
       ) : (
         <Logged user={user} setUser={setUser} option={opt.platform} />
       )}

@@ -1,6 +1,6 @@
-.navbar{
-    background-color: var( --primary-color);
-    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     height: 100vh;
     left: 0;
     position: fixed;
@@ -11,7 +11,8 @@
     max-width: 4.5rem;
     align-items: end;
 }
-.navbar-nav{
+
+.navbar-nav {
     width: 100%;
     height: fit-content;
     max-height: calc(100vh - 6rem);
@@ -22,7 +23,8 @@
     justify-content: flex-start;
     overflow-y: scroll;
 }
-.row{
+
+.row {
     height: 3.8;
     max-height: 3.8rem;
     display: flex;
@@ -31,82 +33,63 @@
 
 ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: var( --primary-color);
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--primary-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: var(--text-color-lighter);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: var(--accent-color);
-  }
-  /*.static{
-    position: fixed;
-    border-radius: 1rem;
-    height: fit-content;
-    max-height: 3.8rem;
-    width: fit-content;
-    overflow: visible; 
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    margin-left: 4rem;
-    background-color: var(--primary-color);
 }
-.hidden{
-    height: 3.8;
-    flex-grow: 0;
-    overflow: hidden; 
-    display: flex;
-    flex-direction: row;
-}
-.out{
-    height: 2.8rem;
-    background-color: var(--primary-color);
-}*/
 
-.navbar-nav li{
-    margin: .5rem;
+.navbar-nav li {
+    margin: 0.5rem;
 }
-.navbar-nav .context{
+
+.navbar-nav .context {
     width: fit-content;
     display: flex;
     flex-direction: row;
     font-size: 1.2rem;
     font-weight: 500;
 }
-.out{
+
+.out {
     width: fit-content;
     display: flex;
     flex-direction: row;
     font-size: 1.2rem;
     font-weight: 500;
 }
-.context-menu{
-    border-radius: .5rem;
-    padding: .1rem;
-    background-color: var( --text-color-lighter);
-    color: var( --primary-color);
+
+.context-menu {
+    border-radius: 0.5rem;
+    padding: 0.1rem;
+    background-color: var(--text-color-lighter);
+    color: var(--primary-color);
     margin-left: 3.5rem;
     position: fixed;
     display: flex;
     width: fit-content;
     overflow: visible;
 }
-.context-menu li{
-    margin: .5rem;
+
+.context-menu li {
+    margin: 0.5rem;
 }
-.option-display{
+
+.option-display {
     border-radius: 1rem;
-    padding: .5rem;
-    color: var( --primary-color);
+    padding: 0.5rem;
+    color: var(--primary-color);
     position: fixed;
     display: flex;
     overflow: visible;
@@ -119,32 +102,36 @@
     background-color: var(--primary-color);
 }
 
-li a{
-    color: var( --text-color-lighter);
+li a {
+    color: var(--text-color-lighter);
     display: block;
     text-decoration: none;
-    padding: .5rem;
+    padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-self: center;
 }
-.delete{
+
+.delete {
     border-bottom: 4px solid var(--text-color-light);
     color: var(--text-color);
-    padding: .1rem 1rem;
+    padding: 0.1rem 1rem;
     font-size: 1rem;
 }
-li a:hover{
-    color: var( --accent-color);
+
+li a:hover {
+    color: var(--accent-color);
 }
-li a.active{
-    color: var( --accent-color);
+
+li a.active {
+    color: var(--accent-color);
 }
-.icon{
+
+.icon {
     height: 1.8rem;
     width: 1.8rem;
 }
-.add{
+
+.add {
     color: var(--text-color-light);
 }
-

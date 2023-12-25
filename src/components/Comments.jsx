@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Comments.css'; // Importa el archivo de estilos CSS
+//import './Comments.css'; // Importa el archivo de estilos CSS
 
 const Comments = ({ user }) => {
   return (
